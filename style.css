@@ -6,7 +6,7 @@
   z-index: 0;
 }
 
-#box {
+div[id^='box'] {
   position: absolute;
   text-align: center;
   width: 100px;
