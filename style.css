@@ -1,0 +1,15 @@
+#draw-area {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  border: 1px solid black;
+  z-index: 0;
+}
+
+#box {
+  position: absolute;
+  text-align: center;
+  width: 100px;
+  border: 1px dotted gray;
+  z-index: 1;
+}
