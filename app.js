@@ -10,24 +10,26 @@ let diffY = 0;
 let endX = 0;
 let endY = 0;
 
-const addBox = (e) => {
+const addBox = () => {
   const box = document.createElement('div');
   box.setAttribute('id', `box-${++count}`);
   box.setAttribute('onMouseDown', 'mouseDown(this)')
-  box.setAttribute('onMouseMove', 'mouseMove(this)');
-  box.setAttribute('onMouseUp', 'mouseUp(this)');
+  box.setAttribute('onMouseMove', 'mouseMove(event)');
+  box.setAttribute('onMouseUp', 'mouseUp()');
   // box.setAttribute('draggable', 'true');
   box.innerText = 'Title';
 
   document.body.insertBefore(box, drawArea);
-  boxElm = document.getElementById(`box-${count}`);
 }
 
-const mouseDown = (e) => {
+const mouseDown = (element) => {
+  // マウスダウンされた要素を取得
+  boxElm = element;
   isDragging = true;
 }
 
-const mouseMove = (e) => {
+const mouseMove = (event) => {
+  // console.log(event);
   if (isDragging) {
     let x = event.clientX;
     let y = event.clientY;
@@ -38,7 +40,7 @@ const mouseMove = (e) => {
   }
 }
 
-const mouseUp = (e) => {
+const mouseUp = () => {
   isDragging = false;
 }
 

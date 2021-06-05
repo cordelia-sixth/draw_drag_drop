@@ -1,3 +1,9 @@
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 #draw-area {
   position: relative;
   width: 500px;
@@ -12,4 +18,26 @@ div[id^='box'] {
   width: 100px;
   border: 1px dotted gray;
   z-index: 1;
+}
+
+/* context menu */
+#context-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  background-color: gainsboro;
+  border: 1px solid grey;
+  margin: 0;
+  padding: 0;
+}
+
+#context-menu > ul {
+  padding: 10px;
+}
+
+#context-menu > li {
+  cursor: pointer;
 }
