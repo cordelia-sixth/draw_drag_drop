@@ -12,13 +12,18 @@ ul {
   z-index: 0;
 }
 
-div[id^='box'] {
+input[id^='box'] {
   position: absolute;
   text-align: center;
   width: 100px;
   border: 1px dotted gray;
   z-index: 1;
 }
+
+input[id^='box']:focus {
+  outline: none;
+}
+
 
 /* context menu */
 #context-menu {
