@@ -17,16 +17,27 @@ let endY = 0;
 const contextMenuElm = document.getElementById('context-menu');
 const target = document.getElementById('body');
 
+// titleボックスの生成
 const addBox = () => {
-  const box = document.createElement('div');
+  const box = document.createElement('input');
   box.setAttribute('id', `box-${++count}`);
+  box.setAttribute('type', 'text');
+  box.setAttribute('placeholder', 'Title');
+  box.setAttribute('onKeyDown', 'onKeyDown(this)');
   box.setAttribute('onMouseDown', 'mouseDown(this)')
   box.setAttribute('onMouseMove', 'mouseMove(event)');
   box.setAttribute('onMouseUp', 'mouseUp()');
-  // box.setAttribute('draggable', 'true');
-  box.innerText = 'Title';
+
 
   document.body.insertBefore(box, drawArea);
+}
+
+// キーボードが押された時の処理
+const onKeyDown = (element) => {
+  if (event.key === 'Enter' || event.key === 'Escape') {
+    // フォーカスを外す
+    element.blur();
+  }
 }
 
 const mouseDown = (element) => {
