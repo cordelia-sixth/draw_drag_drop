@@ -1,6 +1,9 @@
 const drawArea = document.getElementById('draw-area');
 let boxElm = null;
 
+// コンテキストメニューの対象要素
+let targetElm;
+
 let count = 0;
 let isDragging = false;
 let startX = 0;
@@ -9,6 +12,10 @@ let diffX = 0;
 let diffY = 0;
 let endX = 0;
 let endY = 0;
+
+// context menu
+const contextMenuElm = document.getElementById('context-menu');
+const target = document.getElementById('body');
 
 const addBox = () => {
   const box = document.createElement('div');
@@ -44,43 +51,42 @@ const mouseUp = () => {
   isDragging = false;
 }
 
-drawArea.addEventListener('mousedown', addBox, false);
+// context menu
+const contextMenu = (record, obsever) => {
+  try {
+    const addedElement = document.getElementById(record[0].addedNodes[0].id);
 
-
-/////////
-
-const onMouseMove = (event) => {
-  let x = event.clientX;
-  let y = event.clientY;
-  let width = boxElm.offsetWidth;
-  let height = boxElm.offsetHeight;
-  boxElm.style.top = (y-height/2) + "px";
-  boxElm.style.left = (x-width/2) + "px";
-
-}
-
-if (boxElm !== null) {
-  console.log('hello');
-
-  boxElm.addEventListener('mousedown', event => {
-    console.log('hello');
-    isDragging = true;
-  });
-
-  boxElm.addEventListener('mousemove', event => {
-    if (isDragging) {
-      let x = event.clientX;
-      let y = event.clientY;
-      let width = boxElm.offsetWidth;
-      let height = boxElm.offsetHeight;
-      boxElm.style.top = (y-height/2) + "px";
-      boxElm.style.left = (x-width/2) + "px";
-    }
-  });
+    addedElement.addEventListener('contextmenu', e => {
+      e.preventDefault();
   
-  boxElm.addEventListener('mouseup', event => {
-    isDragging = false;
-    end.x = diff.x;
-    end.y = diff.y;
-  });
+      console.log(e.target);
+      targetElm = document.getElementById(e.target.id);
+  
+      // メニューを表示
+      const menu = document.getElementById('context-menu');
+      menu.style.top = e.clientY + 'px';
+      menu.style.left = e.clientX + 'px';
+      menu.style.display = 'block';
+    });
+  } catch (err) {
+    return;
+  }
 }
+
+// クリックしたらコンテキストメニューを消す
+drawArea.addEventListener('mousedown', e => {
+  contextMenuElm.style.display = 'none';
+});
+
+let mo = new MutationObserver(contextMenu);
+mo.observe(target, {childList: true});
+
+
+// delete
+const deleteElm = () => {
+  console.log('deleteEml');
+  targetElm.remove();
+  contextMenuElm.style.display = 'none';
+}
+
+drawArea.addEventListener('mousedown', addBox, false);

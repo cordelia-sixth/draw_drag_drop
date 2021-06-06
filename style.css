@@ -32,6 +32,7 @@ div[id^='box'] {
   border: 1px solid grey;
   margin: 0;
   padding: 0;
+  z-index: 2;
 }
 
 #context-menu > ul {
@@ -40,4 +41,8 @@ div[id^='box'] {
 
 #context-menu > li {
   cursor: pointer;
+}
+
+#delete {
+  border: none;
 }
