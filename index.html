@@ -10,11 +10,16 @@
   <body id="body">
     <div id="draw-area"></div>
 
+    <div id="elements-area">
+      <div id="rectangle">Rectangle</div>
+    </div>
+
     <div id="context-menu">
       <ul>
-        <li><button id="delete" onclick="deleteElm()">Delete</button></li>
-        <li>Cut</li>
-        <li>Copy</li>
+        <li><button id="context-delete" onclick="deleteElm()">Delete</button></li>
+        <li><button id="context-cut" onclick="cutElm()">Cut</button></li>
+        <li><button id="context-copy" onclick="copyElm()">Copy</button></li>
+        <li><button id="context-paste" onclick="pasteElm()">Paste</button></li>
       </ul>
     </div>
   </body>

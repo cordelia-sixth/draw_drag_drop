@@ -12,12 +12,36 @@ ul {
   z-index: 0;
 }
 
+/* elements area */
+#elements-area {
+  margin-top: 10px;
+}
+
+#elements-area > div {
+  width: 100px;
+  height: 30px;
+  border: 1px solid black;
+  text-align: center;
+  cursor: default;
+}
+
+#elements-area > div:hover {
+  background-color: rgb(179, 179, 179);
+}
+
+
+#elements-area > div:active {
+  background-color: grey;
+}
+
+
 input[id^='box'] {
   position: absolute;
   text-align: center;
   width: 100px;
   border: 1px dotted gray;
   z-index: 1;
+  cursor: default;
 }
 
 input[id^='box']:focus {
@@ -48,6 +72,6 @@ input[id^='box']:focus {
   cursor: pointer;
 }
 
-#delete {
+button[id^='context'] {
   border: none;
 }
