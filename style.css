@@ -40,7 +40,6 @@ input[id^='box'] {
   text-align: center;
   width: 100px;
   border: 1px dotted gray;
-  z-index: 1;
   cursor: default;
 }
 

@@ -41,6 +41,7 @@ const addBox = (event, title = 'Title') => {
   box.setAttribute('onMouseMove', 'mouseMove(event)');
   box.setAttribute('onMouseUp', 'mouseUp()');
   box.setAttribute('onMouseOver', 'mouseOver()');
+  box.style.zIndex = '100';
 
   document.body.insertBefore(box, drawArea);
 }
@@ -56,7 +57,6 @@ const pasteBox = () => {
   box.setAttribute('onMouseMove', 'mouseMove(event)');
   box.setAttribute('onMouseUp', 'mouseUp()');
   box.setAttribute('onMouseOver', 'mouseOver()');
-  console.log(event.clientX);
 
   document.body.insertBefore(box, drawArea);
   box.style.top = event.clientY;
@@ -158,6 +158,19 @@ const pasteElm = () => {
 const cutElm = () => {
   duplication = targetElm;
   targetElm.remove();
+  contextMenuElm.style.display = 'none';
+}
+
+// 選択した要素の奥行きを変更する
+const toFront = () => {
+  ++targetElm.style.zIndex;
+  contextMenuElm.style.display = 'none';
+}
+
+const toBack = () => {
+  if (parseInt(targetElm.style.zIndex) >= 2) {
+    --targetElm.style.zIndex;
+  }
   contextMenuElm.style.display = 'none';
 }
 
